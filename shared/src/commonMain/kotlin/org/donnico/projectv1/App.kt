@@ -1,47 +1,63 @@
 package org.donnico.projectv1
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import org.jetbrains.compose.resources.painterResource
-
-import donnico.shared.generated.resources.Res
-import donnico.shared.generated.resources.compose_multiplatform
+import androidx.compose.ui.unit.dp
+import org.donnico.projectv1.e1_firestore.presentation.TaskScreen
+import org.donnico.projectv1.e1_firestore.presentation.TaskViewModel
 
 @Composable
-@Preview
-fun App() {
+fun App(
+    taskViewModel: TaskViewModel? = null,
+    onRequestPermission: () -> Unit = {}
+) {
+    var selectedTab by remember { mutableStateOf(0) }
+
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .safeContentPadding()
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+        Column(modifier = Modifier.fillMaxSize()) {
+            // Navegación entre los 3 ejercicios del examen
+            TabRow(selectedTabIndex = selectedTab) {
+                Tab(
+                    selected = selectedTab == 0,
+                    onClick = { selectedTab = 0 },
+                    text = { Text("E1: Firestore") }
+                )
+                Tab(
+                    selected = selectedTab == 1,
+                    onClick = { selectedTab = 1 },
+                    text = { Text("E2: Room") }
+                )
+                Tab(
+                    selected = selectedTab == 2,
+                    onClick = { selectedTab = 2 },
+                    text = { Text("E3: WorkManager") }
+                )
             }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            when (selectedTab) {
+                0 -> {
+                    if (taskViewModel != null) {
+                        TaskScreen(
+                            viewModel = taskViewModel,
+                            onRequestPermission = onRequestPermission
+                        )
+                    } else {
+                        Text("Cargando Firestore...", modifier = Modifier.padding(16.dp))
+                    }
+                }
+                1 -> {
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.Center) {
+                        Text("Ejercicio 2: Room (Se implementará a continuación)")
+                    }
+                }
+                2 -> {
+                    Box(modifier = Modifier.fillMaxSize(), contentAlignment = androidx.compose.ui.Alignment.Center) {
+                        Text("Ejercicio 3: WorkManager (Se implementará a continuación)")
+                    }
                 }
             }
         }

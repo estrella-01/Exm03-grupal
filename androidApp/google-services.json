@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "269973745422",
+    "firebase_url": "https://progra-movil-a7507-default-rtdb.firebaseio.com",
+    "project_id": "progra-movil-a7507",
+    "storage_bucket": "progra-movil-a7507.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:269973745422:android:f53fe2ee6abcf96b39315f",
+        "android_client_info": {
+          "package_name": "org.donnico.projectv1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBurrII9GA1ZT72vHT1-Fh7YcvI-V1ygaI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
