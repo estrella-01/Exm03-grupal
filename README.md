@@ -1,8 +1,11 @@
 # Proyecto Examen - Desarrollo Móvil (KMP)
-
+- Said Acosta Revollo
+- Melanny Estrella Sandoval Arnez
+- Angel Fernando Belmonte Escalante
+  
 Este proyecto está construido con Kotlin Multiplatform (KMP), Jetpack Compose y Firebase. Demuestra la integración de bases de datos en la nube, notificaciones locales, persistencia local y reactividad en la UI.
 
-## 🚀 Ejercicio 1: E50-5 · Firestore + Notificación interna (50 pts)
+##  Ejercicio 1: E50-5 · Firestore + Notificación interna (50 pts)
 
 ### Configuración en Firebase
 - Se creó una base de datos en **Cloud Firestore** en modo de prueba (reglas: `allow read, write: if true;`).
@@ -24,7 +27,7 @@ Este proyecto está construido con Kotlin Multiplatform (KMP), Jetpack Compose y
 
 ---
 
-## 💾 Ejercicio 2: E25-2 · Room como fuente de verdad (25 pts)
+##  Ejercicio 2: E25-2 · Room como fuente de verdad (25 pts)
 
 ### ¿Cómo funciona?
 1. Se define la entidad `ConfigItem` (id, clave, valor, timestamp) y un `ConfigDao` con métodos para insertar, borrar y obtener un `Flow<List<ConfigItem>>`.
